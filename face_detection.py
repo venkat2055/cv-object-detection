@@ -11,8 +11,8 @@ from datetime import datetime
 import face_recognition
 
 """
-This script reads the video file, looks for license plates and if found, write the image of the frame 
-with bounding boxes and also a csv with list of plates detected and their corresponding images
+This script reads the video file, looks for faces, compares the faces with known faces and if there is a match then 
+writes an image with bounding boxes and the filename of the known face image
 
 python face_detection.py --input-file-path /Users/Periyasamy/Desktop/test_videos/famous_celebs.mov \
                            --known-persons-dir '/Users/Periyasamy/Desktop/test_videos/known_persons' \

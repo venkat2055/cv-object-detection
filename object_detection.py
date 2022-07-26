@@ -3,17 +3,16 @@ from typing import Any, Tuple
 import cv2 as cv2
 import numpy as np
 
-import pandas as pd
 import argparse
 import os
 import uuid
 from datetime import datetime
 
 """
-This script reads the video file, looks for license plates and if found, write the image of the frame 
-with bounding boxes and also a csv with list of plates detected and their corresponding images
+This script reads the video file, looks for objects and if found, write the image of the frame 
+with bounding boxes
 
-python object_detection1.py --input-file-path /Users/Periyasamy/Desktop/test_videos/car_highway_high.mp4 \
+python object_detection.py --input-file-path /Users/Periyasamy/Desktop/test_videos/car_highway_high.mp4 \
                      --output-dir /Users/Periyasamy/Desktop/test_videos/new_output \
                      --sampling-rate 50
 """
@@ -101,8 +100,6 @@ def main(input_file_path: str, output_dir: str, sampling_rate: int) -> None:
     net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
     net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
-    df = None
-
     print(f'Input file path: {input_file_path}')
 
     # check input file exists
@@ -141,20 +138,7 @@ def main(input_file_path: str, output_dir: str, sampling_rate: int) -> None:
                 image_id = str(uuid.uuid1())
                 cv2.imwrite(f'{output_dir}/{image_id}.png', cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
 
-                # Data is stored in CSV file
-                raw_data = {'date': [time.asctime(time.localtime(time.time()))],
-                            'image_id': [image_id]}
-
-                print(raw_data)
-                if df is None:
-                    df = pd.DataFrame(raw_data, columns=['date', 'image_id'])
-                else:
-                    df = pd.concat([df, pd.DataFrame(raw_data, columns=['date', 'image_id'])], ignore_index=True)
-
         counter += 1
-
-    if df is not None:
-        df.to_csv(f'{output_dir}/data.csv', index=False)
 
 
 if __name__ == "__main__":
