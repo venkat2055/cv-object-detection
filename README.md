@@ -3,7 +3,7 @@
 This repository includes the following scripts:
 * license_plate_detection.py - Detect and read license plates in a video file
 * object_detection.py - Detect objects in a video file
-* face_detection.py Recognize faces in a video file
+* face_detection.py - Recognize faces in a video file
 
 ## Read License Plates
 This script reads the video file, looks for license plates and if found, write the image of the frame 
