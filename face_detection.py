@@ -14,9 +14,9 @@ import face_recognition
 This script reads the video file, looks for faces, compares the faces with known faces and if there is a match then 
 writes an image with bounding boxes and the filename of the known face image
 
-python face_detection.py --input-file-path /Users/Periyasamy/Desktop/test_videos/famous_celebs.mov \
-                           --known-persons-dir '/Users/Periyasamy/Desktop/test_videos/known_persons' \
-                           --output-dir /Users/Periyasamy/Desktop/test_videos/new_output \
+python face_detection.py --input-file-path test_videos/famous_celebs.mov \
+                           --known-persons-dir test_videos/known_persons' \
+                           --output-dir test_videos/output \
                            --sampling-rate 50
                      
 """

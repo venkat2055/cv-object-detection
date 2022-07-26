@@ -15,9 +15,9 @@ import easyocr
 This script reads the video file, looks for license plates and if found, write the image of the frame 
 with bounding boxes and also a csv with list of plates detected and their corresponding images
 
-python license_plate_detection.py --input-file-path /Users/Periyasamy/Desktop/test_videos/car_highway_high.mp4 \
-                     --output-dir /Users/Periyasamy/Desktop/test_videos/new_output \
-                     --sampling-rate 50
+python license_plate_detection.py --input-file-path test_videos/car_highway_high.mp4 \
+                     --output-dir test_videos/output \
+                     --sampling-rate 25
 """
 
 MIN_PLATE_LEN = 5  # Minimum str length for detecting a plate

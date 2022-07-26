@@ -12,8 +12,8 @@ from datetime import datetime
 This script reads the video file, looks for objects and if found, write the image of the frame 
 with bounding boxes
 
-python object_detection.py --input-file-path /Users/Periyasamy/Desktop/test_videos/car_highway_high.mp4 \
-                     --output-dir /Users/Periyasamy/Desktop/test_videos/new_output \
+python object_detection.py --input-file-path test_videos/car_highway_high.mp4 \
+                     --output-dir test_videos/output \
                      --model-weights-path 'mobilenet_model/frozen_inference_graph.pb' \
                      --model-graph-path 'mobilenet_model/graph.pbtxt' \
                      --sampling-rate 50
