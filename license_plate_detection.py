@@ -2,14 +2,14 @@ import os
 import time
 import re
 import argparse
-from typing import Tuple
-from datetime import datetime
 import uuid
 import numpy as np
 import pandas as pd
 import cv2
 import imutils
 import easyocr
+from typing import Tuple
+from datetime import datetime
 
 """
 This script reads the video file, looks for license plates and if found, write the image of the frame 

@@ -1,12 +1,11 @@
 import time
-from typing import Any, Tuple
 import cv2 as cv2
 import numpy as np
-
 import argparse
 import os
 import uuid
 from datetime import datetime
+from typing import Any, Tuple
 
 """
 This script reads the video file, looks for objects and if found, write the image of the frame 

@@ -1,14 +1,14 @@
 import time
-from typing import Any, Tuple
-import cv2 as cv2
-import numpy as np
-
-import pandas as pd
 import argparse
 import os
 import uuid
-from datetime import datetime
+import cv2
+import numpy as np
+import pandas as pd
 import face_recognition
+from datetime import datetime
+from typing import Any, Tuple
+
 
 """
 This script reads the video file, looks for faces, compares the faces with known faces and if there is a match then 
