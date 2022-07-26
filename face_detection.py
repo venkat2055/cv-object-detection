@@ -12,7 +12,7 @@ from typing import Any, Tuple
 
 """
 This script reads the video file, looks for faces, compares the faces with known faces and if there is a match then 
-writes an image with bounding boxes and the filename of the known face image
+writes an image with bounding boxes and the filename of the known face image as the name
 
 python face_detection.py --input-file-path test_videos/famous_celebs.mov \
                            --known-persons-dir test_videos/known_persons' \
