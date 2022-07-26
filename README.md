@@ -34,7 +34,7 @@ This script reads the video file, looks for faces, compares the faces with known
 writes an image with bounding boxes and the filename of the known face image
 
 The script uses [face-recognition python library](https://pypi.org/project/face-recognition/) 
-
+Known persons directory should have images with filname in the format {person_name}.{format}
 cmd to run
 ```console 
 python face_detection.py --input-file-path <video-file-path> --known-persons-dir '<known-faces-dir> --output-dir <output-dir-path>
