@@ -25,7 +25,8 @@ python face_detection.py --input-file-path /Users/Periyasamy/Desktop/test_videos
 def get_known_face_encodings(known_faces_dir):
     isExist = os.path.exists(known_faces_dir)
     if not isExist:
-        raise ('Known persons dir not found')
+        raise 'Known persons dir not found'
+
     print('getting known person encodings')
     know_person_encodings = []
     know_persons = []
@@ -49,9 +50,6 @@ def recognize_faces(input_img, known_person_encodings, known_persons):
     # Find all the faces and face encodings in the unknown image
     input_face_locations = face_recognition.face_locations(input_rgb)
     input_face_encodings = face_recognition.face_encodings(input_rgb, input_face_locations)
-
-    best_match_index = -1
-    res = None
 
     for (top, right, bottom, left), face_encoding in zip(input_face_locations, input_face_encodings):
         matches = face_recognition.compare_faces(known_person_encodings, face_encoding)
@@ -129,7 +127,6 @@ if __name__ == "__main__":
                         help='dir for the outputs')
     parser.add_argument('-sampling-rate', '--sampling-rate', dest='sampling_rate', type=int, default=25,
                         help='Sampling every n frames')
-
 
     args = parser.parse_args()
 

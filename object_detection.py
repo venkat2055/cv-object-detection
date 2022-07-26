@@ -14,8 +14,11 @@ with bounding boxes
 
 python object_detection.py --input-file-path /Users/Periyasamy/Desktop/test_videos/car_highway_high.mp4 \
                      --output-dir /Users/Periyasamy/Desktop/test_videos/new_output \
+                     --model-weights-path 'mobilenet_model/frozen_inference_graph.pb' \
+                     --model-graph-path 'mobilenet_model/graph.pbtxt' \
                      --sampling-rate 50
 """
+
 MAX_N_OBJECTS = 3
 
 CLASSES = {
@@ -39,9 +42,6 @@ CLASSES = {
 }
 
 COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
-
-MODEL_WEIGHTS = '/Users/Periyasamy/Desktop/mobilenet_model/frozen_inference_graph.pb'
-MODEL_GRAPH = '/Users/Periyasamy/Desktop/mobilenet_model/graph.pbtxt'
 MODEL_CONFIDENCE_THRESHOLd = 0.5
 
 
@@ -91,10 +91,12 @@ def draw_bounding_box(img: np.ndarray, class_id: np.ndarray, confidence: np.ndar
         counter += 1
 
 
-def main(input_file_path: str, output_dir: str, sampling_rate: int) -> None:
+def main(input_file_path: str, output_dir: str, sampling_rate: int, model_weights_path: str,
+         model_graph_path: str) -> None:
+
     # Load pretrained weights
-    net = cv2.dnn_DetectionModel(MODEL_WEIGHTS,
-                                 MODEL_GRAPH)
+    net = cv2.dnn_DetectionModel(model_weights_path,
+                                 model_graph_path)
 
     # set opencv backend and CPU inference
     net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
@@ -149,6 +151,10 @@ if __name__ == "__main__":
                         help='Path for the video')
     parser.add_argument('-output-dir', '--output-dir', dest='output_dir', type=str, required=True,
                         help='dir for the outputs')
+    parser.add_argument('-model-weights-path', '--model-weights-path', dest='model_weights_path', type=str,
+                        required=True, help='path model weights')
+    parser.add_argument('-model-graph-path', '--model-graph-path', dest='model_graph_path', type=str, required=True,
+                        help='path for model graph')
     parser.add_argument('-sampling-rate', '--sampling-rate', dest='sampling_rate', type=int, default=25,
                         help='Sampling every n frames')
 
@@ -157,6 +163,8 @@ if __name__ == "__main__":
     job_start = datetime.now()
     main(input_file_path=args.input_file_path,
          output_dir=args.output_dir,
+         model_weights_path=args.model_weights_path,
+         model_graph_path=args.model_graph_path,
          sampling_rate=args.sampling_rate, )
 
     print(f'Total time: {round((datetime.now() - job_start).seconds / 60, 2)} minutes')
