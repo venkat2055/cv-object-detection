@@ -1,6 +1,6 @@
 # CV-object-detection
 
-The repository includes the following scripts:
+This repository includes the following scripts:
 * Detect and read license plates in a video file
 * Detect objects in a video file
 * Recognize faces in a video file
